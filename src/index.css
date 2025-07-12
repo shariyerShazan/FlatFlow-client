@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@theme {
+  --color-favone: #9381ff;
+}
