@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { setTotalMember, setTotalUser, setUser } from "../redux/user.slice";
+import {  setUser } from "../redux/user.slice";
 import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
 function Login() {
@@ -31,8 +31,6 @@ function Login() {
       );
       if (res?.data?.success) {
         dispatch(setUser(res.data.user))
-        dispatch(setTotalMember(res.data.totalMember))
-        dispatch(setTotalUser(res.data.totalUser))
         toast.success(res?.data?.message || "login successful");
         setError("");
         navigate("/");

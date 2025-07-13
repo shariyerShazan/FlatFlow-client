@@ -8,15 +8,19 @@ import { RiFileList3Line } from "react-icons/ri";
 import { MdAddToPhotos } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import { BiSolidNotification } from "react-icons/bi";
+import { RiDiscountPercentFill } from "react-icons/ri";
+
 
 function SidebarForAdmin() {
   const role = "admin";
 
   const adminLinks = [
-    { name: "List Apartment", to: "list-apartment", logo: <MdAddToPhotos size={20} /> },
-    { name: "Agreemented", to: "agreemented", logo: <RiFileList3Line size={20} /> },
+    { name: "Add Apartment", to: "list-apartment", logo: <MdAddToPhotos size={20} /> },
+    { name: "Agreements", to: "agreemented", logo: <RiFileList3Line size={20} /> },
     { name: "Announce something", to: "make-announcement", logo: <GrAnnounce size={20} /> },
     { name: "Annoucements", to: "announcements", logo: <BiSolidNotification size={20} /> },
+       { name: "All payment History", to: "payment-history", logo: <RiFileList3Line size={20} /> },
+       { name: "Make cupons", to: "make-cupons", logo: <RiDiscountPercentFill size={20} /> },
   ];
 
   

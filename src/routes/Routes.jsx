@@ -15,11 +15,15 @@ import ApartmentDetails from "../pages/ApartmentDetails";
 import Agreemented from "../pages/pageForAdmin/Agreemented";
 import MyBooking from "../pages/pageForUser/MyBooking";
 import MemberDashboardLayout from "../layouts/MemberDashboardLayout";
-import HomePageForMember from "../pages/pageForMembers/MyApartment";
+// import HomePageForMember from "../pages/pageForMembers/MyApartment";
 import MyApartment from "../pages/pageForMembers/MyApartment";
 import MakeAnnouncement from "../pages/pageForAdmin/MakeAnnouncement";
 import AllAnnouncements from "../pages/pageForAdmin/AllAnnouncements";
 import AllAnnouncementMem from "../pages/pageForMembers/AllAnnouncementMem";
+import PaymentHistory from "../pages/pageForMembers/PaymentHistory";
+import DashboardPageForMember from "../pages/pageForMembers/DashboardPageForMember";
+import AllPaymentHistory from "../pages/pageForAdmin/AllPaymentHistory";
+import MakeCupons from "../pages/pageForAdmin/MakeCupons";
   
 export const Router = createBrowserRouter([
     {
@@ -77,7 +81,16 @@ export const Router = createBrowserRouter([
             {
                 path : "announcements" ,
                 element : <AllAnnouncements />
+            },
+            {
+                path : "payment-history" ,
+                element : <AllPaymentHistory />
+            },
+            {
+                path : "make-cupons" ,
+                element : <MakeCupons />
             }
+            
         ]
     },
     {
@@ -86,12 +99,21 @@ export const Router = createBrowserRouter([
         errorElement: <ErrorPage /> ,
         children: [
             {
+                index: true ,
+                element: <DashboardPageForMember/>
+            },
+            {
                 path: "my-apartment" ,
                 element: <MyApartment />
             },
             {
                 path: "all-announcement" ,
                 element: <AllAnnouncementMem />
+            },
+            {
+                
+                path: "payment-history" ,
+                element: <PaymentHistory />
             }
         ]
     }

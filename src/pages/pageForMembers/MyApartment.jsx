@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import useGetUserAgreements from '../../hooks/useGetUserAgreements'
+import PaymentModal from '../../components/PaymentModal'
 
 const MyApartment = () => {
   useGetUserAgreements()
 
   const { userAgreemented } = useSelector((store) => store.agreement)
+
+  const [selectedBooking, setSelectedBooking] = useState(null)
 
   const acceptedAgreements = userAgreemented.filter(
     (agreement) => agreement.status === "accepted"
@@ -39,15 +42,30 @@ const MyApartment = () => {
                 <p>Rent: ${booking.apartmentFor?.rent}</p>
                 <p>Contact: {booking.contactNo}</p>
 
-                <p className="mt-2">
+                <p className="my-1">
                   Status:{" "}
                   <span className="font-semibold text-green-600">
                     {booking.status?.charAt(0).toUpperCase() + booking.status?.slice(1)}
                   </span>
                 </p>
+                <button
+                  onClick={() => setSelectedBooking(booking)}
+                  className='btn bg-favone hover:bg-favone/80'
+                >
+                  Let's pay rent
+                </button>
               </div>
             </div>
           ))}
+
+          {/* Modal Rendering */}
+          {selectedBooking && (
+            <PaymentModal
+              apartment={selectedBooking.apartmentFor}
+              agreementId={selectedBooking._id}
+              onClose={() => setSelectedBooking(null)}
+            />
+          )}
         </div>
       ) : (
         <p className="text-center text-gray-500 italic">
