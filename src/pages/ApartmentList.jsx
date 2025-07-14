@@ -54,7 +54,7 @@ const ApartmentList = () => {
               </p>
               <div className="flex justify-center ">
                 
-                <h1 className="text-2xl font-bold my-2 group-hover:-translate-y-[470%] duration-500">Flat<span className="text-[#9381ff]">Flow</span></h1>
+                {/* <h1 className="text-2xl font-bold my-2 group-hover:-translate-y-[470%] duration-500">Flat<span className="text-[#9381ff]">Flow</span></h1> */}
                  
           </div>
           <p className="text-right group-hover:hidden text-sm">Click to view Details...</p>

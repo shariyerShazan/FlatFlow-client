@@ -58,11 +58,16 @@ const Agreemented = () => {
             <div className="w-full md:w-1/2 space-y-2">
               <p>
                 <span className="font-semibold">Requested By: </span>
-                {agreement.requestedBy?.email || "N/A"}
+               <p className='ml-8'>Name: {agreement.requestedBy?.fullName || "N/A"}</p>
+               <p className='ml-8'>Email {agreement.requestedBy?.email || "N/A"}</p>
               </p>
               <p>
                 <span className="font-semibold">Contact No: </span>
                 {agreement.contactNo || "N/A"}
+              </p>
+              <p>
+                <span className="font-semibold">Agreemented At: </span>
+                {agreement.createdAt.slice(0,10) || "N/A"}
               </p>
               <p>
                 <span className="font-semibold">Status: </span>

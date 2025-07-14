@@ -44,15 +44,29 @@ function AllPaymentHistory() {
               className="p-6 border-2 border-favone rounded-md shadow-md bg-white"
             >
               <p className="mb-2">
-                <span className='font-bold'>Amount:</span> ${payment?.paymentAmount}
+                <span className='font-bold'>Rent:</span> ${payment?.paymentAmount}
+              </p> 
+              {
+                payment?.coupon && <div>
+                  <p className="mb-2">
+                <span className='font-bold'>Pay after discount:</span> ${payment?.discountPay}
+              </p>
+              
+              <p className="mb-2">
+                <span className='font-bold'>Applyed Coupon code:</span> {payment?.coupon?.code}
+              </p>
+                </div>
+              }
+              <p className="mb-2">
+                <span className='font-bold'>Month:</span> {payment?.month}
               </p>
               <p className="mb-2">
                 <span className='font-bold'>Paid at:</span> {new Date(payment?.createdAt).toLocaleString()}
               </p>
-              <p className="mb-2">
+              <p className="mb-2 p-2 w-96 shadow-md">
                 <strong>Paymented by:</strong>
-                <p><span className='font-bold'>Name: </span> {payment?.paymentedBy?.fullName}</p>
-                <p><span className='font-bold'>Email: </span> {payment?.paymentedBy?.email}</p>
+                <p><span className='font-bold ml-10'>Name: </span> {payment?.paymentedBy?.fullName}</p>
+                <p><span className='font-bold ml-10'>Email: </span> {payment?.paymentedBy?.email}</p>
               </p>
              
 

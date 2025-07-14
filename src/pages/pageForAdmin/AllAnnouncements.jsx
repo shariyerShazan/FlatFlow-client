@@ -22,7 +22,7 @@ function AllAnnouncements() {
     <div className="max-w-3xl mx-auto mt-10 px-4 space-y-4">
       {allAnnouncements && allAnnouncements?.length > 0 ? (
         allAnnouncements.map((item) => (
-          <div
+          <div  onClick={() => toggleDescription(item._id)}
             key={item._id}
             className="border border-favone bg-white rounded-lg p-4 shadow-md transition duration-300"
           >

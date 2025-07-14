@@ -1,46 +1,110 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaTimesCircle, FaBriefcase, FaClipboardList, FaCheckCircle } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { PiBuildingApartmentBold } from "react-icons/pi";
-import { PiUsersThreeFill } from "react-icons/pi";
+import { FaTimesCircle } from "react-icons/fa";
+import { PiBuildingApartmentBold, PiUsersThreeFill } from "react-icons/pi";
 import { MdRememberMe } from "react-icons/md";
+import axios from "axios";
+import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
 const HomePageForDashboard = () => {
+  const [dashboardData, setDashboardData] = useState({
+    totalUser: 0,
+    totalMember: 0,
+    totalApartment: 0,
+    availableApartment: 0,
+    agreementedApartment: 0,
+    PercentageOfAvailable: 0,
+    PercentageOfAgreemented: 0,
+  });
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
+
+    const fetchDashboardData = async () => {
+      try {
+        const res = await axios.get(`${USER_API_END_POINT}/datas`, {
+          withCredentials: true,
+        });
+        if (res.data.success) {
+          setDashboardData(res.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch dashboard data:", err);
+      }
+    };
+
+    fetchDashboardData();
   }, []);
 
-  const {totalAppartments } = useSelector((store)=>store.apartment)
-  const {totalUser , totalMember } = useSelector((store)=>store.user)
+  const {
+    totalUser,
+    totalMember,
+    totalApartment,
+    availableApartment,
+    agreementedApartment,
+    PercentageOfAvailable,
+    PercentageOfAgreemented,
+  } = dashboardData;
 
   const cards = [
-   
     {
-      title: "Total Appartment",
-      count: totalAppartments,
-      icon: <PiBuildingApartmentBold size={28} className="text-green-600" />,
+      title: "Total Apartment",
+      count: totalApartment,
       color: "bg-green-50",
     },
     {
+      title: "Available Apartment",
+      count: availableApartment,
+      color: "bg-blue-50",
+    },
+    {
+      title: "Agreemented Apartment",
+      count: agreementedApartment,
+      color: "bg-amber-50",
+    },
+    {
       title: "Total Users",
-      count: totalUser || 0,
-      icon: <PiUsersThreeFill size={28} className="text-yellow-600" />,
+      count: totalUser,
       color: "bg-yellow-50",
     },
     {
       title: "Total Members",
-      count: totalMember || 0,
-      icon: <MdRememberMe size={28} className="text-purple-600" />,
+      count: totalMember,
       color: "bg-purple-50",
-    }, {
-        title: "Rejected Jobs",
-        count: 25,
-        icon: <FaTimesCircle size={28} className="text-red-600" />,
-        color: "bg-red-50",
-      }
+    },
+    {
+      title: "Available %",
+      count: `${PercentageOfAvailable}%`,
+      color: "bg-green-100",
+    },
+    {
+      title: "Agreemented %",
+      count: `${PercentageOfAgreemented}%`,
+      color: "bg-red-100",
+    },
   ];
+
+  const getIconByTitle = (title) => {
+    switch (title) {
+      case "Total Apartment":
+        return <PiBuildingApartmentBold size={28} className="text-green-600" />;
+      case "Available Apartment":
+        return <PiBuildingApartmentBold size={28} className="text-blue-600" />;
+      case "Agreemented Apartment":
+        return <FaTimesCircle size={28} className="text-amber-600" />;
+      case "Total Users":
+        return <PiUsersThreeFill size={28} className="text-yellow-600" />;
+      case "Total Members":
+        return <MdRememberMe size={28} className="text-purple-600" />;
+      case "Available %":
+        return <PiBuildingApartmentBold size={28} className="text-green-700" />;
+      case "Agreemented %":
+        return <FaTimesCircle size={28} className="text-red-700" />;
+      default:
+        return <PiBuildingApartmentBold size={28} className="text-gray-500" />;
+    }
+  };
 
   return (
     <div className="p-6">
@@ -61,7 +125,9 @@ const HomePageForDashboard = () => {
                 <h4 className="text-sm text-gray-500 mb-1">{card.title}</h4>
                 <p className="text-2xl font-bold">{card.count}</p>
               </div>
-              <div className="bg-white p-2 rounded-full shadow animate-bounce">{card.icon}</div>
+              <div className="bg-white p-2 rounded-full shadow animate-bounce">
+                {getIconByTitle(card.title)}
+              </div>
             </div>
           </div>
         ))}

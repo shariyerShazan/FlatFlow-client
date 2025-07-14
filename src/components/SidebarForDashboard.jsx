@@ -9,14 +9,14 @@ import { MdAddToPhotos } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import { BiSolidNotification } from "react-icons/bi";
 import { RiDiscountPercentFill } from "react-icons/ri";
-
+import { IoGitCommit } from "react-icons/io5";
 
 function SidebarForAdmin() {
   const role = "admin";
 
   const adminLinks = [
     { name: "Add Apartment", to: "list-apartment", logo: <MdAddToPhotos size={20} /> },
-    { name: "Agreements", to: "agreemented", logo: <RiFileList3Line size={20} /> },
+    { name: "Agreements", to: "agreemented", logo: <IoGitCommit size={20} /> },
     { name: "Announce something", to: "make-announcement", logo: <GrAnnounce size={20} /> },
     { name: "Annoucements", to: "announcements", logo: <BiSolidNotification size={20} /> },
        { name: "All payment History", to: "payment-history", logo: <RiFileList3Line size={20} /> },

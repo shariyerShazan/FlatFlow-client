@@ -43,7 +43,21 @@ function PaymentHistory() {
               className="p-6 border-2 border-favone rounded-md shadow-md bg-white"
             >
               <p className="mb-2">
-                <strong>Amount:</strong> ${payment?.paymentAmount}
+                <strong>Rent:</strong> ${payment?.paymentAmount}
+              </p>
+              {
+                payment?.coupon && <div>
+                  <p className="mb-2">
+                <strong>Pay after discount:</strong> ${payment?.discountPay}
+              </p>
+              
+              <p className="mb-2">
+                <strong>Applyed Coupon code:</strong> {payment?.coupon?.code}
+              </p>
+                </div> 
+              }
+              <p className="mb-2">
+                <strong>Month :</strong> {payment?.month}
               </p>
               <p className="mb-2">
                 <strong>Paid at:</strong> {new Date(payment?.createdAt).toLocaleString()}

@@ -11,7 +11,7 @@ const CheckoutForm = ({
   onClose,
   coupon,
   selectedMonth,
-  finalAmount ,
+  finalAmount,
   setFinalAmount,
   setDiscountPercent,
 }) => {
@@ -43,12 +43,12 @@ const CheckoutForm = ({
         );
 
         if (res.data.success) {
-          setClientSecret(res.data.clientSecret);
-          setFinalAmount(res.data.amount);
-          setDiscountPercent(res.data.discountPercent);
-          toast(`Payable Amount: $${res.data.amount}`);
+          setClientSecret(res?.data?.clientSecret);
+          setFinalAmount(res?.data?.amount);
+          setDiscountPercent(res?.data?.discountPercent);
+          //toast(`Payable Amount: $${res?.data?.amount}`);
         } else {
-          toast.error(res.data.message || "Failed to create payment intent");
+          toast.error(res?.data?.message || "Failed to create payment intent");
         }
       } catch (err) {
         setCardError(err.response?.data?.message || err.message);
@@ -65,10 +65,16 @@ const CheckoutForm = ({
     setProcessing(true);
     setCardError(null);
 
-    if (!stripe || !elements) return;
+    if (!stripe || !elements) {
+      setProcessing(false);
+      return;
+    }
 
     const card = elements.getElement(CardElement);
-    if (!card) return;
+    if (!card) {
+      setProcessing(false);
+      return;
+    }
 
     const { error } = await stripe.createPaymentMethod({
       type: "card",
@@ -81,6 +87,8 @@ const CheckoutForm = ({
       return;
     }
 
+    console.log("Submitting payment with clientSecret:", clientSecret);
+
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card,
@@ -90,6 +98,8 @@ const CheckoutForm = ({
         },
       },
     });
+
+    console.log("Payment result:", result);
 
     if (result.error) {
       setCardError(result.error.message);
@@ -104,11 +114,14 @@ const CheckoutForm = ({
           {
             apartmentId: apartment._id,
             rent: apartment.rent,
+            discountPay: finalAmount,
             month: selectedMonth,
             coupon,
           },
           { withCredentials: true }
         );
+
+        console.log("Save payment response:", saveRes.data);
 
         if (saveRes.data.success) {
           toast.success("Payment successful!");
@@ -161,7 +174,10 @@ const CheckoutForm = ({
 
         <button
           type="button"
-          onClick={onClose}
+          onClick={() => {
+            setCardError(null);
+            onClose();
+          }}
           className="btn bg-favone hover:bg-favone/80 px-6 py-2 rounded"
         >
           Cancel

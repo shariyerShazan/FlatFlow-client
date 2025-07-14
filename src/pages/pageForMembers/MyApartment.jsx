@@ -40,7 +40,7 @@ const MyApartment = () => {
                 <p>Block: {booking.apartmentFor?.block}</p>
                 <p>Floor: {booking.apartmentFor?.floor}</p>
                 <p>Rent: ${booking.apartmentFor?.rent}</p>
-                <p>Contact: {booking.contactNo}</p>
+                {/* <p>Contact: {booking.contactNo}</p> */}
 
                 <p className="my-1">
                   Status:{" "}
