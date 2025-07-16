@@ -13,6 +13,9 @@ import EditApartmentModal from "../components/EditApartmentModal";
 
 
 const ApartmentDetails = () => {
+  useEffect(() => {
+      document.title = "Apartment details | FlatFlow";
+    }, []);
   const { id } = useParams();
   const { user } = useSelector((store) => store.user);
   const [apartment, setApartment] = useState(null);

@@ -9,6 +9,9 @@ import axios from "axios";
 import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
 const HomePageForDashboard = () => {
+  useEffect(() => {
+      document.title = "Dashboard | FlatFlow";
+    }, []);
   const { user } = useSelector((store) => store.user); // user info from redux
 
   const [dashboardData, setDashboardData] = useState({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useGetApartmentList from "../hooks/useGetApartmentList";
 import { PiBuildingApartmentBold } from "react-icons/pi";
@@ -6,6 +6,9 @@ import { Link } from "react-router";
 import { setCurrentPage, setLimit } from "../redux/apartment.slice";
 
 const ApartmentList = () => {
+  useEffect(() => {
+      document.title = "Apartments | FlatFlow";
+    }, []);
   const dispatch = useDispatch();
   const { apartments, currentPage, totalPages, limit } = useSelector((store) => store.apartment);
 

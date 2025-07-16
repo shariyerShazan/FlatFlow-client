@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdArrowRoundBack, IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router";  // corrected the import path
@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
 function Register() {
+  useEffect(() => {
+      document.title = "Register | FlatFlow";
+    }, []);
   const [loadingBtn, setLoadingBtn] = useState(false);
   const navigate = useNavigate();
 
