@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Home, Users, ShieldCheck, Bolt } from "lucide-react";
 
@@ -32,6 +32,9 @@ const features = [
 // The rest of the AboutPage component remains the same as before
 
 const AboutPage = () => {
+  useEffect(() => {
+      document.title = "About | FlatFlow";
+    }, []);
   return (
     <main className="min-h-screen bg-gradient-to-tr from-blue-50 to-white text-gray-800">
       {/* Hero Section */}

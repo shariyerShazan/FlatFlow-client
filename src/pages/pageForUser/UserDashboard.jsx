@@ -1,7 +1,7 @@
 
 
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import AllAnnouncements from "../pageForAdmin/AllAnnouncements";
@@ -10,6 +10,9 @@ import { Outlet } from "react-router";
 
 
 const UserDashboard = () => {
+  useEffect(() => {
+      document.title = "Dashboard | FlatFlow";
+    }, []);
   const { user } = useSelector((store) => store.user); // user info from redux
 
 

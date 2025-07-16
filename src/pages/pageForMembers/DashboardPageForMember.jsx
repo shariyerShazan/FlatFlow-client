@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const DashboardPageForMember = () => {
+  useEffect(() => {
+        document.title = "Dashboard | FlatFlow";
+      }, []);
   const { user } = useSelector((state) => state.user);
 
   return (
