@@ -4,6 +4,7 @@ import AboutBuilding from '../components/AboutBuilding'
 import CouponsSection from '../components/CouponsSection'
 import FooterSection from '../components/FooterSection'
 import ApartmentLocation from '../components/ApartmentLocation'
+import FeedbackSection from '../components/FeedbackSection'
 
 const HomePage = () => {
   useEffect(() => {
@@ -15,6 +16,7 @@ const HomePage = () => {
       <ApartmentLocation />
       <CouponsSection />
       <AboutBuilding />
+      <FeedbackSection />
       {/* <FooterSection /> */}
     </div>
   )
