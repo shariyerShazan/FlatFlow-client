@@ -17,6 +17,7 @@ function SidebarForAdmin() {
   const adminLinks = [
     { name: "Add Apartment", to: "list-apartment", logo: <MdAddToPhotos size={20} /> },
     { name: "Agreements", to: "agreemented", logo: <IoGitCommit size={20} /> },
+    { name: "Manage Members", to: "manage-members", logo: <IoGitCommit size={20} /> },
     { name: "Announce something", to: "make-announcement", logo: <GrAnnounce size={20} /> },
     { name: "Annoucements", to: "announcements", logo: <BiSolidNotification size={20} /> },
        { name: "All payment History", to: "payment-history", logo: <RiFileList3Line size={20} /> },

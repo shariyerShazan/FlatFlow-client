@@ -130,7 +130,7 @@ function Navbar() {
                     {user.fullName || "User Name"}
                   </div>
                   <NavLink
-                    to={user.role === "admin" ? "/dashboard" : user.role === "member" ? "/dashboard-member" : "/"}
+                    to={user.role === "admin" ? "/dashboard" : user.role === "member" ? "/dashboard-member": user.role === "user" ? "/dashboard-user" : "/"}
                     className="flex items-center gap-2 px-4 py-3 hover:bg-favone/20 transition-colors duration-200"
                     onClick={() => setProfileDropdownOpen(false)}
                   >

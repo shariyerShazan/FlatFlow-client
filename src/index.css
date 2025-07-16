@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* index.css */
+@import url("https://unpkg.com/leaflet/dist/leaflet.css");
 
 @theme {
   --color-favone: #9381ff;

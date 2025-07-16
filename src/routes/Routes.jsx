@@ -24,6 +24,9 @@ import PaymentHistory from "../pages/pageForMembers/PaymentHistory";
 import DashboardPageForMember from "../pages/pageForMembers/DashboardPageForMember";
 import AllPaymentHistory from "../pages/pageForAdmin/AllPaymentHistory";
 import MakeCupons from "../pages/pageForAdmin/MakeCupons";
+import ManageMember from "../pages/pageForAdmin/ManageMember";
+import AboutPage from "../pages/AboutPage";
+import UserDashboard from "../pages/UserDashboard";
   
 export const Router = createBrowserRouter([
     {
@@ -48,12 +51,20 @@ export const Router = createBrowserRouter([
                 element: <ApartmentList />
             },
             {
+                path: "dashboard-user" ,
+                element: <UserDashboard />
+            },
+            {
                 path: "apartments/:id" ,
                 element: <ApartmentDetails />
             },
             {
                 path: "my-booking" ,
                 element: <MyBooking />
+            },
+            {
+                path: "about" ,
+                element: <AboutPage />
             }
         ]
     },
@@ -89,6 +100,10 @@ export const Router = createBrowserRouter([
             {
                 path : "make-cupons" ,
                 element : <MakeCupons />
+            },
+            {
+                path: "manage-members" ,
+                element : <ManageMember />
             }
             
         ]

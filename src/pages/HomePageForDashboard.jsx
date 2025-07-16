@@ -4,10 +4,13 @@ import "aos/dist/aos.css";
 import { FaTimesCircle } from "react-icons/fa";
 import { PiBuildingApartmentBold, PiUsersThreeFill } from "react-icons/pi";
 import { MdRememberMe } from "react-icons/md";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
 const HomePageForDashboard = () => {
+  const { user } = useSelector((store) => store.user); // user info from redux
+
   const [dashboardData, setDashboardData] = useState({
     totalUser: 0,
     totalMember: 0,
@@ -108,6 +111,21 @@ const HomePageForDashboard = () => {
 
   return (
     <div className="p-6">
+      {/* Profile Card */}
+      <div className="max-w-xl mx-auto mb-12 bg-white shadow-lg rounded-xl p-6 flex items-center gap-6 border border-gray-200">
+        <img
+          src={user?.profilePicture}
+          alt="profile"
+          className="w-20 h-20 rounded-full object-cover border-4 border-myPrimary"
+        />
+        <div>
+          <h3 className="text-xl font-semibold text-gray-800">{user?.fullName}</h3>
+          <p className="text-gray-600">{user?.email}</p>
+          <p className="text-gray-600">Role: {user?.role}</p>
+        </div>
+      </div>
+
+      {/* Dashboard Section */}
       <h2 className="text-3xl font-bold mb-8 text-myPrimary text-center">
         📊 Dashboard Overview
       </h2>

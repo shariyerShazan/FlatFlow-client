@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const images = [
   {
@@ -78,12 +79,14 @@ const Banner = () => {
             >
               {img.subtitle}
             </motion.p>
+            <Link to={"/apartments"} >
             <motion.button
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition-all"
+              className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-300 transition-all cursor-pointer"
               whileHover={{ scale: 1.1 }}
             >
               Explore FlatFlow
             </motion.button>
+            </Link>
           </div>
         </motion.div>
       ))}
