@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import useGetUserAgreements from '../../hooks/useGetUserAgreements'
 
 
 const MyBooking = () => {
-
+useEffect(() => {
+      document.title = "Booked | FlatFlow";
+    }, []);
   useGetUserAgreements()
 
   const { userAgreemented } = useSelector((store) => store.agreement)
