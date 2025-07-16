@@ -4,6 +4,9 @@ import { CUPONS_API_END_POINT } from "../../utlis/apiEndPoints";
 import { toast } from "react-toastify";
 
 const MakeCupons = () => {
+    useEffect(() => {
+          document.title = "Coupon | FlatFlow";
+        }, []);
   const [coupons, setCoupons] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [form, setForm] = useState({ code: "", discountPercentage: "", expiresAt: "" });
