@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { APARTMENT_API_END_POINT } from '../../utlis/apiEndPoints';
 import { toast } from 'react-toastify';
 
 const CreateListForApartment = () => {
-
+  useEffect(() => {
+        document.title = "Create Apartment | FlatFlow";
+      }, []);
 
   const [creating , setCreating] = useState(false)
 
