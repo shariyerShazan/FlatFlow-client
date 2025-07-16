@@ -7,7 +7,7 @@ const apartmentSlice = createSlice({
     currentPage : 1 ,
     totalPages : 1 ,
     totalAppartments : 0,
-    limit: 10
+    limit: 6
  
   },
   reducers: {

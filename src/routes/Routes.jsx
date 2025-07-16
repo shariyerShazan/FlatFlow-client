@@ -26,7 +26,11 @@ import AllPaymentHistory from "../pages/pageForAdmin/AllPaymentHistory";
 import MakeCupons from "../pages/pageForAdmin/MakeCupons";
 import ManageMember from "../pages/pageForAdmin/ManageMember";
 import AboutPage from "../pages/AboutPage";
-import UserDashboard from "../pages/UserDashboard";
+import UserDashboard from "../pages/pageForUser/UserDashboard";
+import AllAnnouncementForUser from "../pages/pageForUser/AllAnnouncementForUser";
+import UserPrivateRoute from "./UserPrivateRoute";
+import AdminPrivateRoute from "./AdminPrivateRoute";
+import MemberPrivateRoute from "./ MemberPrivateRoute";
   
 export const Router = createBrowserRouter([
     {
@@ -52,15 +56,35 @@ export const Router = createBrowserRouter([
             },
             {
                 path: "dashboard-user" ,
-                element: <UserDashboard />
+                element: <UserPrivateRoute >
+   <UserDashboard /> 
+                </UserPrivateRoute>,
+                children: [
+                    {
+                        path: "all-announcement" ,
+                        element:
+                        <UserPrivateRoute >
+ <AllAnnouncementForUser />
+                </UserPrivateRoute>
+                        
+                    }
+                ]
             },
             {
                 path: "apartments/:id" ,
-                element: <ApartmentDetails />
+                element: 
+                <UserPrivateRoute >
+                <ApartmentDetails />
+                               </UserPrivateRoute>
+                 
             },
             {
                 path: "my-booking" ,
-                element: <MyBooking />
+                element:
+                <UserPrivateRoute >
+                <MyBooking />
+                               </UserPrivateRoute>
+                 
             },
             {
                 path: "about" ,
@@ -70,7 +94,13 @@ export const Router = createBrowserRouter([
     },
     {
         path: "/dashboard" ,
-        element : <DashboardLayout /> ,
+        element :
+        <UserPrivateRoute >
+         <AdminPrivateRoute >
+                 <DashboardLayout />
+        </AdminPrivateRoute>
+         </UserPrivateRoute>
+          ,
         errorElement : <ErrorPage /> ,
         children: [
             {
@@ -110,7 +140,13 @@ export const Router = createBrowserRouter([
     },
     {
         path: "/dashboard-member",
-        element: <MemberDashboardLayout /> ,
+        element:
+        <UserPrivateRoute >
+         <MemberPrivateRoute >
+              <MemberDashboardLayout />
+        </MemberPrivateRoute>
+         </UserPrivateRoute>
+          ,
         errorElement: <ErrorPage /> ,
         children: [
             {

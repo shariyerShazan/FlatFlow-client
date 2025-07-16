@@ -1,12 +1,15 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { APARTMENT_API_END_POINT } from '../../utlis/apiEndPoints';
 import { toast } from 'react-toastify';
 
 const CreateListForApartment = () => {
 
 
+  const [creating , setCreating] = useState(false)
+
     const handleListing = async (e)=>{
+      setCreating(true)
         e.preventDefault()
         const block = e.target.block.value
         const floor = e.target.floor.value
@@ -26,9 +29,12 @@ const CreateListForApartment = () => {
             if(res?.data?.success){
                toast(res.data?.message)
                e.target.reset()
+               setCreating(false)
             }
         } catch (error) {
             toast(error?.response?.data?.message)
+        }finally{
+          setCreating(false)
         }
     }
 
@@ -109,7 +115,7 @@ const CreateListForApartment = () => {
             type="submit"
             className="bg-favone text-white font-semibold w-full py-2 rounded-md hover:bg-favone/90 transition cursor-pointer"
           >
-            Create Apartment
+            {creating ? <div className="loading loading-spinner loading-md"></div> : "Create Apartment"}
           </button>
 
         </form>

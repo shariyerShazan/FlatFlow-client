@@ -10,12 +10,15 @@ import { GrAnnounce } from "react-icons/gr";
 import { BiSolidNotification } from "react-icons/bi";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { IoGitCommit } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 
 function SidebarForAdmin() {
   const role = "admin";
 
   const adminLinks = [
+    { name: "Profile", to: "", logo: <CgProfile size={20} /> },
     { name: "Add Apartment", to: "list-apartment", logo: <MdAddToPhotos size={20} /> },
+
     { name: "Agreements", to: "agreemented", logo: <IoGitCommit size={20} /> },
     { name: "Manage Members", to: "manage-members", logo: <IoGitCommit size={20} /> },
     { name: "Announce something", to: "make-announcement", logo: <GrAnnounce size={20} /> },

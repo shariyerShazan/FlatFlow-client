@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import SidebarForMember from '../components/SidebarForMember'
 import { Outlet } from 'react-router'
+import FooterSection from '../components/FooterSection'
 
 const MemberDashboardLayout = () => {
   return (
@@ -15,6 +16,7 @@ const MemberDashboardLayout = () => {
           <Outlet />
        </div>
     </div>
+    <FooterSection />
   </div>
   )
 }

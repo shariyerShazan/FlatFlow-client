@@ -18,7 +18,7 @@ const MyApartment = () => {
     <div className="max-w-5xl mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-6 text-center">My Bookings</h2>
 
-      {acceptedAgreements.length > 0 ? (
+      {acceptedAgreements?.length > 0 ? (
         <div className="space-y-4 flex flex-col">
           {acceptedAgreements.map((booking) => (
             <div
@@ -27,7 +27,7 @@ const MyApartment = () => {
             >
               {/* Apartment Image */}
               <img
-                src={booking.apartmentFor?.image || "https://via.placeholder.com/150"}
+                src={booking?.apartmentFor?.image || "https://via.placeholder.com/150"}
                 alt="apartment"
                 className="w-72 h-44 object-cover rounded-md"
               />
@@ -35,17 +35,17 @@ const MyApartment = () => {
               {/* Details */}
               <div className="flex-1">
                 <h3 className="text-lg font-bold mb-1">
-                  Apartment No: {booking.apartmentFor?.apartmentNo}
+                  Apartment No: {booking?.apartmentFor?.apartmentNo}
                 </h3>
-                <p>Block: {booking.apartmentFor?.block}</p>
-                <p>Floor: {booking.apartmentFor?.floor}</p>
-                <p>Rent: ${booking.apartmentFor?.rent}</p>
+                <p>Block: {booking?.apartmentFor?.block}</p>
+                <p>Floor: {booking?.apartmentFor?.floor}</p>
+                <p>Rent: ${booking?.apartmentFor?.rent}</p>
                 {/* <p>Contact: {booking.contactNo}</p> */}
 
                 <p className="my-1">
                   Status:{" "}
                   <span className="font-semibold text-green-600">
-                    {booking.status?.charAt(0).toUpperCase() + booking.status?.slice(1)}
+                    {booking?.status?.charAt(0).toUpperCase() + booking?.status?.slice(1)}
                   </span>
                 </p>
                 <button
@@ -61,8 +61,8 @@ const MyApartment = () => {
           {/* Modal Rendering */}
           {selectedBooking && (
             <PaymentModal
-              apartment={selectedBooking.apartmentFor}
-              agreementId={selectedBooking._id}
+              apartment={selectedBooking?.apartmentFor}
+              agreementId={selectedBooking?._id}
               onClose={() => setSelectedBooking(null)}
             />
           )}

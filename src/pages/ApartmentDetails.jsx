@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import useGetUserAgreements from "../hooks/useGetUserAgreements";
 import AgreementModal from "../components/AgreementModal";
+// import EditApartmentModal from "../components/EditApartmentModal";
+import Swal from "sweetalert2";
+import EditApartmentModal from "../components/EditApartmentModal";
 
 
 const ApartmentDetails = () => {
@@ -15,6 +18,8 @@ const ApartmentDetails = () => {
   const [apartment, setApartment] = useState(null);
   const [isOpen , setIsOpen] = useState(false)
   const [triggerAgreementFetch, setTriggerAgreementFetch] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+
 
 
   useGetUserAgreements(triggerAgreementFetch);
@@ -60,6 +65,32 @@ const ApartmentDetails = () => {
     }
   }
 
+  const handleDelete = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        const res = await axios.delete(`${APARTMENT_API_END_POINT}/apartments/${id}`, {
+          withCredentials: true,
+        });
+        if (res.data.success) {
+          toast.success(res.data.message);
+          window.location.href = "/"; // redirect or refresh
+        }
+      } catch (error) {
+        console.log(error)
+        toast.error("Failed to delete apartment");
+      }
+    }
+  };
+  
+
   if (!apartment) return <Loading />;
 
   return (
@@ -85,21 +116,36 @@ const ApartmentDetails = () => {
         {isOpen && <AgreementModal setTriggerAgreementFetch={setTriggerAgreementFetch} apartmentId={apartment._id} onClose={() => setIsOpen(false)} />}
      {/* modal */}
   <span className="font-bold">Status: </span>
-  <span className={apartment?.isRented ? "text-red-600 font-semibold" : "text-green-600 font-semibold"}>
-    {apartment?.isRented ? "Rented" : "Available"}
+  <span className={apartment?.available ? "text-green-600 font-semibold" : " text-red-600 font-semibold"}>
+    {apartment?.available ? "Available" : "Rented"}
   </span>
 </p>
       <p className="text-gray-700 mt-4">{apartment?.description}</p>
 
       <div className="mt-6 flex gap-4 flex-wrap">
-      {(user?.role === "member" || user?.role === "user") && !apartment.isRented && (
-  alreadyApply ? (
+      {((user?.role === "member" || user?.role === "user") && !apartment.available && (
+  alreadyApply) ? (
     <button
       onClick={handleCancelAgreement}
       className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer"
     >
       Cancel Request
     </button>
+  ):( user?.role === "admin" )? (
+    <div className="flex gap-4 mt-6">
+      <button
+        onClick={() => setOpenEditModal(true)}
+        className="bg-blue-600 text-white px-4 py-2 rounded-md"
+      >
+        Edit
+      </button>
+      <button
+        onClick={handleDelete}
+        className="bg-red-600 text-white px-4 py-2 rounded-md"
+      >
+        Delete
+      </button>
+    </div>
   ) : (
     <button
       onClick={() => setIsOpen(true)}
@@ -111,6 +157,15 @@ const ApartmentDetails = () => {
 )}
 
 </div>
+
+{openEditModal && (
+  <EditApartmentModal
+    apartment={apartment}
+    onClose={() => setOpenEditModal(false)}
+    onUpdated={() => window.location.reload()}
+  />
+)}
+
 
     
     </div>

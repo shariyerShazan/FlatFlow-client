@@ -74,7 +74,7 @@ function PaymentHistory() {
                 <p><span className='font-bold '>Rent:</span> ${payment?.agreementFor?.rent}</p>
                 <p><span className='font-bold '>Available:</span> {payment?.agreementFor?.available ? "Yes" : "No"}</p>
                      </div>
-                     <img className='rounded-md object-cover h-64 w-96' src={payment.agreementFor.image} alt="" />
+                     <img className='rounded-md object-cover h-64 w-96' src={payment?.agreementFor?.image} alt="" />
                     </div>
               </div>
             </div>

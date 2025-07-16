@@ -6,7 +6,7 @@ const DashboardPageForMember = () => {
 
   return (
     <div>
-      <div className="max-w-xl mx-auto mb-12 bg-white shadow-lg rounded-xl p-6 flex items-center gap-6 border border-gray-200">
+      <div className="max-w-xl mx-auto mb-12 my-8 bg-white shadow-lg rounded-xl p-6 flex items-center gap-6 border border-gray-200">
         <img
           src={user?.profilePicture}
           alt="profile"

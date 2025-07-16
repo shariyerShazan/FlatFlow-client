@@ -2,21 +2,19 @@ import React from "react";
 import { MdDownloadDone } from "react-icons/md";
 
 import { NavLink } from "react-router"; 
-import { TiMessages } from "react-icons/ti";
-import { RiFileList3Line } from "react-icons/ri";
-import { MdAddToPhotos } from "react-icons/md";
+// import { TiMessages } from "react-icons/ti";
+// import { RiFileList3Line } from "react-icons/ri";
+// import { MdAddToPhotos } from "react-icons/md";
 import { BiSolidNotification } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 
-function SidebarForMember() {
-  const role = "member";
+function SidebarForUser() {
+  const role = "user";
 
   const adminLinks = [
-    { name: "Profile", to: "/dashboard-member", logo: <CgProfile size={20} /> },
-    { name: "My Apartment", to: "my-apartment", logo: <MdAddToPhotos size={20} /> },
-
+    // { name: "My Apartment", to: "my-apartment", logo: <MdAddToPhotos size={20} /> },
     // { name: "Payment", to: "payment", logo: <RiFileList3Line size={20} /> },
-    { name: "Payment History", to: "payment-history", logo: <RiFileList3Line size={20} /> },
+    { name: "Profile", to: "/dashboard-user", logo: <CgProfile size={20} /> },
     { name: "Announcements", to: "all-announcement", logo: <BiSolidNotification size={20} /> },
     // { name: "Chat with Applicants", to: "chats", logo: <TiMessages size={20} /> },
   ];
@@ -24,7 +22,7 @@ function SidebarForMember() {
   
 
   const getAllLinks = (role) => {
-    if (role === "member") {
+    if (role === "user") {
       return adminLinks;
     } else {
       return [];
@@ -55,4 +53,4 @@ function SidebarForMember() {
   );
 }
 
-export default SidebarForMember;
+export default SidebarForUser;

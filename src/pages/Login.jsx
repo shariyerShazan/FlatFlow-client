@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router";
@@ -10,6 +10,10 @@ import {  setUser } from "../redux/user.slice";
 import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
 function Login() {
+  useEffect(() => {
+      document.title = "Login | FlatFlow";
+    }, []);
+    
   const navigate = useNavigate();
   const dispatch = useDispatch()
 

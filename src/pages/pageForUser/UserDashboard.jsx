@@ -4,7 +4,9 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
-import AllAnnouncements from "./pageForAdmin/AllAnnouncements";
+import AllAnnouncements from "../pageForAdmin/AllAnnouncements";
+import SidebarForUser from "../../components/SideBarForUser";
+import { Outlet } from "react-router";
 
 
 const UserDashboard = () => {
@@ -16,7 +18,15 @@ const UserDashboard = () => {
   return (
     <div className="p-6">
       {/* Profile Card */}
-      <div className="max-w-xl mx-auto mb-12 bg-white shadow-lg rounded-xl p-6 flex items-center gap-6 border border-gray-200">
+     
+      {/* <h2 className="text-center  text-xl font-bold text-favone ">All Announcement here</h2>
+      <AllAnnouncements /> */}
+       <div className='grid grid-cols-24'>
+         <div className='col-span-4'>
+         <SidebarForUser />
+         </div>
+         <div className='col-span-20'>
+         <div className="max-w-xl mx-auto mb-12 bg-white shadow-lg rounded-xl p-6 flex items-center gap-6 border border-gray-200">
         <img
           src={user?.profilePicture}
           alt="profile"
@@ -29,8 +39,9 @@ const UserDashboard = () => {
         </div>
         
       </div>
-      <h2 className="text-center  text-xl font-bold text-favone ">All Announcement here</h2>
-      <AllAnnouncements />
+            <Outlet />
+         </div>
+      </div>
     </div>
   );
 };

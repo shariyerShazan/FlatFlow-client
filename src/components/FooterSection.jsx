@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Twitter, Facebook, Instagram, Linkedin } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router"; 
 
 const socialLinks = [
   {
@@ -46,10 +46,10 @@ const FooterSection = () => {
 
         {/* Middle: Navigation Links */}
         <nav className="flex flex-wrap justify-center gap-6">
-          <Link to={"about"} className="hover:text-pink-300 transition-colors">
+          <Link to="/about" className="hover:text-pink-300 transition-colors">
             About
           </Link>
-          <Link to={"/apartments"} className="hover:text-pink-300 transition-colors">
+          <Link to="/apartments" className="hover:text-pink-300 transition-colors">
             Apartments
           </Link>
           <a href="#coupons" className="hover:text-pink-300 transition-colors">

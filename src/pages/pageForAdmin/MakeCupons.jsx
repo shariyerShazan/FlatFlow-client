@@ -146,6 +146,16 @@ const MakeCupons = () => {
                 />
               </div>
               <div>
+                <label className="block font-medium mb-1">description</label>
+                <textarea
+                  type="text"
+                  name="discountPercentage"
+                   required
+                  className="w-full border border-gray-400 px-4 py-2 rounded"
+                  placeholder="description"
+                />
+              </div>
+              <div>
                 <label className="block font-medium mb-1">Expiry Date</label>
                 <input
                   type="date"
