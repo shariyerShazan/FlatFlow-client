@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { AGREEMENT_API_END_POINT, APARTMENT_API_END_POINT } from "../utlis/apiEndPoints";
@@ -13,6 +13,7 @@ import EditApartmentModal from "../components/EditApartmentModal";
 
 
 const ApartmentDetails = () => {
+  const navigate = useNavigate()
   useEffect(() => {
       document.title = "Apartment details | FlatFlow";
     }, []);
@@ -33,6 +34,12 @@ const ApartmentDetails = () => {
    const alreadyApply = userAgreemented.some(agreement => {
     return agreement?.apartmentFor?._id === id;
   });
+  const handelUser = ()=>{
+    if(!user){
+      toast("Please login first")
+      navigate("/login")
+    }
+  }
   
 
   useEffect(() => {
@@ -126,15 +133,15 @@ const ApartmentDetails = () => {
       <p className="text-gray-700 mt-4">{apartment?.description}</p>
 
       <div className="mt-6 flex gap-4 flex-wrap">
-      {((user?.role === "member" || user?.role === "user") && !apartment.available && (
-  alreadyApply) ? (
+      <div className="mt-6 flex gap-4 flex-wrap">
+  {!user ? (
     <button
-      onClick={handleCancelAgreement}
-      className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer"
+      onClick={handelUser}
+      className="bg-purple-600 text-white px-4 py-2 rounded-md cursor-pointer"
     >
-      Cancel Request
+      Book Now
     </button>
-  ):( user?.role === "admin" )? (
+  ) : user?.role === "admin" ? (
     <div className="flex gap-4 mt-6">
       <button
         onClick={() => setOpenEditModal(true)}
@@ -149,15 +156,25 @@ const ApartmentDetails = () => {
         Delete
       </button>
     </div>
-  ) : (
-    <button
-      onClick={() => setIsOpen(true)}
-      className="bg-purple-600 text-white px-4 py-2 rounded-md cursor-pointer"
-    >
-      Book Now
-    </button>
-  )
-)}
+  ) : user?.role === "member" || user?.role === "user" ? (
+    !apartment.available && alreadyApply ? (
+      <button
+        onClick={handleCancelAgreement}
+        className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer"
+      >
+        Cancel Request
+      </button>
+    ) : (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="bg-purple-600 text-white px-4 py-2 rounded-md cursor-pointer"
+      >
+        Book Now
+      </button>
+    )
+  ) : null}
+</div>
+
 
 </div>
 

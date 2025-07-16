@@ -19,7 +19,7 @@ function SidebarForAdmin() {
     { name: "Profile", to: "", logo: <CgProfile size={20} /> },
     { name: "Add Apartment", to: "list-apartment", logo: <MdAddToPhotos size={20} /> },
 
-    { name: "Agreements", to: "agreemented", logo: <IoGitCommit size={20} /> },
+    { name: "Agreement Requests", to: "agreemented", logo: <IoGitCommit size={20} /> },
     { name: "Manage Members", to: "manage-members", logo: <IoGitCommit size={20} /> },
     { name: "Announce something", to: "make-announcement", logo: <GrAnnounce size={20} /> },
     { name: "Annoucements", to: "announcements", logo: <BiSolidNotification size={20} /> },

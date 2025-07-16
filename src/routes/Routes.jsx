@@ -73,9 +73,7 @@ export const Router = createBrowserRouter([
             {
                 path: "apartments/:id" ,
                 element: 
-                <UserPrivateRoute >
-                <ApartmentDetails />
-                               </UserPrivateRoute>
+                   <ApartmentDetails />
                  
             },
             {

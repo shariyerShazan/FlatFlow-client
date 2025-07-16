@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AGREEMENT_API_END_POINT } from "../utlis/apiEndPoints";
+// import { useNavigate } from "react-router";
 // import useGetUserAgreements from "../hooks/useGetUserAgreements";
 
 
@@ -15,7 +16,7 @@ const AgreementModal = ({ onClose, apartmentId , setTriggerAgreementFetch }) => 
 
   const handleAgreement = async (e) => {
     e.preventDefault();
-
+   
     const contactNo = e.target.contactNo.value;
 
     if (!contactNo) {

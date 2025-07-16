@@ -1,12 +1,61 @@
-# React + Vite
+# FlatFlow — Client (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FlatFlow is a modern, full-featured apartment management web application built with React. It allows users to browse, request, manage, and administrate apartment rentals easily and efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Purpose
 
-## Expanding the ESLint configuration
+To provide a digital platform for residents and admins to manage apartment rentals, requests, agreements, and payments in a streamlined and interactive way.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌐 Live URL
+
+**Frontend (Vercel)** 👉 https://flatflow-client.vercel.app
+
+---
+
+## ✨ Key Features
+
+- 🔍 **Dynamic Apartment Listing** — Filter apartments by rent range with real-time search.
+- 🗂️ **Role-Based Access** — Admin, Member, and User roles with protected routes.
+- 📦 **Pagination + Limit Selector** — Paginated apartment list with adjustable limit.
+- 📝 **Apartment Booking System** — Users can request to book apartments.
+- ❌ **Cancel Request** — Users can cancel their apartment agreement request.
+- 🛠️ **Admin Controls**:
+  - Create, Edit, Delete apartments
+  - Manage members
+  - Update apartment availability
+- 💳 **Stripe Payment Integration** — Members can pay apartment rent securely.
+- 🖼️ **Cloudinary Image Upload** — Upload apartment images via admin panel.
+- 💬 **Feedback Section** — Users can submit feedback for FlatFlow.
+- 🧠 **Redux + Redux Persist** — Global state management with persistence.
+- 🔔 **Toast Notifications** — Instant feedback using `react-toastify`.
+- 🎨 **Modern UI** — Built with Tailwind CSS and styled using `daisyUI`.
+- 🌍 **Leaflet Map** — Location map integration for apartments.
+
+---
+
+## 📦 Dependencies
+
+```json
+{
+  "react": "^19.1.0",
+  "react-dom": "^19.1.0",
+  "react-router": "^7.6.3",
+  "redux": "^9.2.0",
+  "react-redux": "^9.2.0",
+  "@reduxjs/toolkit": "^2.8.2",
+  "redux-persist": "^6.0.0",
+  "axios": "^1.10.0",
+  "aos": "^2.3.4",
+  "lucide-react": "^0.525.0",
+  "motion": "^12.23.5",
+  "sweetalert2": "^11.22.2",
+  "react-toastify": "^11.0.5",
+  "@stripe/react-stripe-js": "^3.7.0",
+  "tailwindcss": "^4.1.11",
+  "leaflet": "^1.9.4",
+  "react-leaflet": "^5.0.0"
+}
