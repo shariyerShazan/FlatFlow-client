@@ -8,10 +8,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ApartmentList = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000 })};
+
 
   useEffect(() => {
+        AOS.init({ duration: 1000 });
       document.title = "Apartments | FlatFlow";
     }, []);
   const dispatch = useDispatch();
@@ -62,12 +62,14 @@ const ApartmentList = () => {
       </div>
 
       {/* Apartment Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {apartments && apartments.length > 0 ? (
-          apartments.map((apartment) => (
+          apartments.map((apartment , idx) => (
             <Link
               to={`${apartment._id}`}
               key={apartment._id}
+              data-aos="fade-up"
+              data-aos-delay={idx * 200}
               className="border border-favone rounded-xl shadow-md p-4 hover:shadow-xl group transition bg-white relative"
             >
               <img
