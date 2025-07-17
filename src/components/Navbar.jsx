@@ -11,6 +11,7 @@ import { USER_API_END_POINT } from '../utlis/apiEndPoints';
 import { PiBuildingApartmentBold } from "react-icons/pi";
 import { BiSelectMultiple } from "react-icons/bi";
 import { setUser } from '../redux/user.slice';
+import { FcAbout } from "react-icons/fc";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function Navbar() {
   const links = [{ name: "Home", icon: <FaHome size={20} />, to: "/" }];
 
   links.push({ name: "Apartments", icon: <PiBuildingApartmentBold size={20} />, to: "/apartments" });
+  links.push({ name: "About FlatFlow", icon: <FcAbout size={20} />, to: "/about" });
 
   if (user) {
     if (user.role === "admin") {
