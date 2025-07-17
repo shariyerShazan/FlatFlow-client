@@ -14,7 +14,7 @@ function SidebarForUser() {
   const adminLinks = [
     // { name: "My Apartment", to: "my-apartment", logo: <MdAddToPhotos size={20} /> },
     // { name: "Payment", to: "payment", logo: <RiFileList3Line size={20} /> },
-    { name: "Profile", to: "/dashboard-user", logo: <CgProfile size={20} /> },
+    // { name: "Profile", to: "/dashboard-user", logo: <CgProfile size={20} /> },
     { name: "Announcements", to: "all-announcement", logo: <BiSolidNotification size={20} /> },
     // { name: "Chat with Applicants", to: "chats", logo: <TiMessages size={20} /> },
   ];

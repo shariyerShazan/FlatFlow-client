@@ -12,7 +12,7 @@ function SidebarForMember() {
   const role = "member";
 
   const adminLinks = [
-    { name: "Profile", to: "/dashboard-member", logo: <CgProfile size={20} /> },
+    // { name: "Profile", to: "/dashboard-member", logo: <CgProfile size={20} /> },
     { name: "My Apartment", to: "my-apartment", logo: <MdAddToPhotos size={20} /> },
 
     // { name: "Payment", to: "payment", logo: <RiFileList3Line size={20} /> },
