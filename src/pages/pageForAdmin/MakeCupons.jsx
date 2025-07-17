@@ -4,9 +4,10 @@ import { CUPONS_API_END_POINT } from "../../utlis/apiEndPoints";
 import { toast } from "react-toastify";
 
 const MakeCupons = () => {
-    useEffect(() => {
-          document.title = "Coupon | FlatFlow";
-        }, []);
+  useEffect(() => {
+    document.title = "Coupon | FlatFlow";
+  }, []);
+
   const [coupons, setCoupons] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [form, setForm] = useState({ code: "", discountPercentage: "", expiresAt: "" });
@@ -61,7 +62,7 @@ const MakeCupons = () => {
 
       if (res.data.success) {
         setSuccessMsg("Coupon created successfully!");
-        toast(res.data.message)
+        toast(res.data.message);
         setForm({ code: "", discountPercentage: "", expiresAt: "" });
         fetchCoupons();
         setModalOpen(false);
@@ -70,6 +71,24 @@ const MakeCupons = () => {
       setError(err.response?.data?.message || "Error creating coupon");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const toggleAvailability = async (couponId, currentStatus) => {
+    try {
+      const res = await axios.patch(
+        `${CUPONS_API_END_POINT}/availability/${couponId}`,
+        { available: !currentStatus },
+        { withCredentials: true }
+      );
+
+      if (res.data.success) {
+        toast(`Coupon ${!currentStatus ? "enabled" : "disabled"} successfully`);
+        fetchCoupons(); // update the list after change
+      }
+    } catch (err) {
+      console.error("Error updating availability:", err);
+      toast.error("Failed to update availability");
     }
   };
 
@@ -96,6 +115,8 @@ const MakeCupons = () => {
                 <th className="py-2 px-4 border">Coupon Code</th>
                 <th className="py-2 px-4 border">Discount (%)</th>
                 <th className="py-2 px-4 border">Expires At</th>
+                <th className="py-2 px-4 border">Status</th>
+                <th className="py-2 px-4 border">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -105,6 +126,23 @@ const MakeCupons = () => {
                   <td className="py-2 px-4 border">{coupon.discountPercentage}%</td>
                   <td className="py-2 px-4 border">
                     {new Date(coupon.expiresAt).toLocaleDateString()}
+                  </td>
+                  <td className="py-2 px-4 border">
+                    {coupon.available ? (
+                      <span className="text-green-600 font-medium">Available</span>
+                    ) : (
+                      <span className="text-red-600 font-medium">Unavailable</span>
+                    )}
+                  </td>
+                  <td className="py-2 px-4 border">
+                    <button
+                      onClick={() => toggleAvailability(coupon?._id, coupon?.available)}
+                      className={`px-3 py-1 rounded text-white ${
+                        coupon?.available ? "bg-red-500 hover:bg-red-600" : "bg-green-500 hover:bg-green-600"
+                      }`}
+                    >
+                      {coupon?.available ? "Disable" : "Enable"}
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -152,8 +190,7 @@ const MakeCupons = () => {
                 <label className="block font-medium mb-1">description</label>
                 <textarea
                   type="text"
-                  name="discountPercentage"
-                   required
+                  name="description"
                   className="w-full border border-gray-400 px-4 py-2 rounded"
                   placeholder="description"
                 />

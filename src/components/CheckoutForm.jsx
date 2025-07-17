@@ -14,13 +14,14 @@ const CheckoutForm = ({
   finalAmount,
   setFinalAmount,
   setDiscountPercent,
+  cardError ,
+  setCardError
 }) => {
   const { user } = useSelector((store) => store.user);
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const [cardError, setCardError] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
 
@@ -45,6 +46,7 @@ const CheckoutForm = ({
         if (res.data.success) {
           setClientSecret(res?.data?.clientSecret);
           setFinalAmount(res?.data?.amount);
+          setCardError("")
           setDiscountPercent(res?.data?.discountPercent);
           //toast(`Payable Amount: $${res?.data?.amount}`);
         } else {

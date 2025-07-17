@@ -13,6 +13,7 @@ const PaymentModal = ({ apartment, onClose }) => {
   const [coupon, setCoupon] = useState("");
   const [finalAmount, setFinalAmount] = useState(null);
   const [discountPercent, setDiscountPercent] = useState(0);
+  const [cardError, setCardError] = useState(null);
 
   return (
     <div className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 bg-black/30">
@@ -47,7 +48,7 @@ const PaymentModal = ({ apartment, onClose }) => {
           <select
             className="w-full border border-gray-300 rounded px-3 py-2"
             value={selectedMonth}
-            onChange={(e) => setSelectedMonth(e.target.value)}
+            onChange={(e) => (setSelectedMonth(e.target.value) , setCardError(null))}
           >
             <option value="">-- Select Month --</option>
             {[
@@ -69,7 +70,7 @@ const PaymentModal = ({ apartment, onClose }) => {
               type="text"
               placeholder="Enter coupon code"
               value={coupon}
-              onChange={(e) => setCoupon(e.target.value.toUpperCase())}
+              onChange={(e) => (setCoupon(e.target.value.toUpperCase()), setCardError(null))}
               className="flex-1 border border-gray-300 rounded px-3 py-2"
             />
             <button
@@ -102,6 +103,8 @@ const PaymentModal = ({ apartment, onClose }) => {
             <Elements stripe={stripePromise}>
               <CheckoutForm
               finalAmount={finalAmount}
+              cardError={cardError}
+              setCardError={setCardError}
                 onClose={onClose}
                 apartment={apartment}
                 selectedMonth={selectedMonth}

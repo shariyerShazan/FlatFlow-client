@@ -59,7 +59,7 @@ const CouponsSection = () => {
             },
           }}
         >
-          {coupons.map((coupon, index) => (
+          { coupons.map((coupon, index) => (
             <motion.div
               key={coupon._id || index}
               className="bg-white rounded-2xl shadow-lg p-6 cursor-pointer hover:shadow-2xl hover:scale-105 transition-transform duration-300 border-2 border-purple-300"
@@ -69,10 +69,11 @@ const CouponsSection = () => {
               }}
               whileHover={{ scale: 1.08, boxShadow: "0 15px 25px rgba(219, 39, 119, 0.3)" }}
             >
-              <h3 className="text-2xl font-bold text-purple-700 mb-2">{coupon.title || "Coupon Title"}</h3>
-              <p className="text-sm text-gray-800 font-bold mb-4">Discount: {coupon.discountPercentage  || "0"}%</p>
+              <h3 className="text-2xl font-bold text-purple-700 mb-2">{coupon?.title || "Coupon Title"}</h3>
+              <p className="text-sm text-gray-800 font-bold mb-4">Discount: {coupon?.discountPercentage  || "0"}%</p>
+              <p className={`text-sm  font-bold mb-4 ${coupon?.available? "text-green-500" : "text-red-500"  }`}>{coupon?.available? "Available" : "Notavailable"  }</p>
               <div className="text-xl font-mono text-pink-600 tracking-widest bg-pink-100 inline-block px-3 py-1 rounded-lg select-none">
-                {coupon.code || "NO-CODE"}
+                {coupon?.code || "NO-CODE"}
               </div>
               <p className="mt-4 text-sm text-gray-500"><span className="font-bold">Expires on: </span>{coupon?.expiresAt.slice(0,10)}</p>
             </motion.div>
