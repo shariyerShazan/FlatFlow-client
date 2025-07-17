@@ -70,7 +70,7 @@ const CouponsSection = () => {
               whileHover={{ scale: 1.08, boxShadow: "0 15px 25px rgba(219, 39, 119, 0.3)" }}
             >
               <h3 className="text-2xl font-bold text-purple-700 mb-2">{coupon.title || "Coupon Title"}</h3>
-              <p className="text-sm text-gray-600 mb-4">{coupon.description || "Coupon details go here."}</p>
+              <p className="text-sm text-gray-800 font-bold mb-4">Discount: {coupon.discountPercentage  || "0"}%</p>
               <div className="text-xl font-mono text-pink-600 tracking-widest bg-pink-100 inline-block px-3 py-1 rounded-lg select-none">
                 {coupon.code || "NO-CODE"}
               </div>

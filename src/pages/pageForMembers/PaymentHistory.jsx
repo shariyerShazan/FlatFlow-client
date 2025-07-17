@@ -65,8 +65,8 @@ function PaymentHistory() {
 
               <div className="mt-4 p-4 border-2 border-gray-300 rounded bg-gray-50">
                 <h4 className=" font-semibold mb-3 text-lg">Apartment Details:</h4>
-                    <div className='flex justify-center gap-3 items-center'>
-                    <div>
+                    <div className='flex flex-col sm:flex-row justify-center gap-3 items-center'>
+                    <div className=''>
                      <p><span className='font-bold '>ID:</span> {payment?.agreementFor?._id}</p>
                 <p><span className='font-bold '>Block:</span> {payment?.agreementFor?.block}</p>
                 <p><span className='font-bold '>Floor:</span> {payment?.agreementFor?.floor}</p>
