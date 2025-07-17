@@ -4,8 +4,13 @@ import useGetApartmentList from "../hooks/useGetApartmentList";
 import { PiBuildingApartmentBold } from "react-icons/pi";
 import { Link } from "react-router";
 import { setCurrentPage, setLimit } from "../redux/apartment.slice";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ApartmentList = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1000 })};
+
   useEffect(() => {
       document.title = "Apartments | FlatFlow";
     }, []);
