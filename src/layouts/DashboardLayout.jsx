@@ -14,7 +14,7 @@ const DashboardLayout = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-[90%] mx-auto">
       <Navbar />
 
       {/* Mobile Sidebar Toggle Button */}
