@@ -12,7 +12,7 @@ To provide a digital platform for residents and admins to manage apartment renta
 
 ## 🌐 Live URL
 
-**Frontend (Vercel)** 👉 https://flatflow-client.vercel.app
+**Frontend (netlify)** 👉 https://flatflow.netlify.app
 
 ---
 
