@@ -157,7 +157,7 @@ const ApartmentDetails = () => {
       </button>
     </div>
   ) : user?.role === "member" || user?.role === "user" ? (
-    !apartment.available && alreadyApply ? (
+     alreadyApply ? (
       <button
         onClick={handleCancelAgreement}
         className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer"

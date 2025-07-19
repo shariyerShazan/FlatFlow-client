@@ -1,13 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import useGetUserAgreements from '../../hooks/useGetUserAgreements'
+import axios from 'axios';
+import { AGREEMENT_API_END_POINT } from '../../utlis/apiEndPoints';
+import { toast } from 'react-toastify';
 
 
 const MyBooking = () => {
 useEffect(() => {
       document.title = "Booked | FlatFlow";
     }, []);
-  useGetUserAgreements()
+
+  const [triggerAgreementFetch, setTriggerAgreementFetch] = useState(false);
+  useGetUserAgreements(triggerAgreementFetch)
+  const handleCancelAgreement = async (id)=>{
+    try {
+      const res = await axios.delete(`${AGREEMENT_API_END_POINT}/cancel-agreement/${id}` , {withCredentials: true})
+      if (res.data.success) {
+        toast(res.data.message);
+        setTriggerAgreementFetch((prev) => !prev)
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }
 
   const { userAgreemented } = useSelector((store) => store.agreement)
 
@@ -53,6 +69,12 @@ useEffect(() => {
                     {booking.status?.charAt(0).toUpperCase() + booking.status?.slice(1)}
                   </span>
                 </p>
+                <button
+        onClick={()=>handleCancelAgreement(booking.apartmentFor._id)}
+        className="bg-red-500 text-white my-2 px-4 py-2 rounded-md cursor-pointer"
+      >
+        Cancel Request
+      </button>
               </div>
             </div>
           ))}

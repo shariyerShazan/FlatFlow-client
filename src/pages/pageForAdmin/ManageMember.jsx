@@ -58,8 +58,8 @@ function ManageMember() {
             members.map((member) => (
               <tr key={member._id}>
                 <td className="py-2 px-4 border-2  border-favone">{member?.fullName}</td>
-                <td className="py-2 px-4  justify-center items-center gap-4  border-favone flex">
-                    <img className='w-10 h-10 rounded-full object-cover' src={member?.profilePicture} alt="" />
+                <td className="py-2 px-4 border-1 justify-center items-center gap-4  border-favone flex">
+                    <img className='w-10 h-10  rounded-full object-cover' src={member?.profilePicture} alt="" />
                     {member.email}</td>
                 <td className="py-2 px-4 border-2  border-favone">
                   <button

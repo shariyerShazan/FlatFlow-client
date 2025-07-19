@@ -59,7 +59,7 @@ const Agreemented = () => {
               <p>
                 <span className="font-semibold">Requested By: </span>
                <p className='ml-8'>Name: {agreement.requestedBy?.fullName || "N/A"}</p>
-               <p className='ml-8'>Email {agreement.requestedBy?.email || "N/A"}</p>
+               <p className='ml-8'>Email: {agreement.requestedBy?.email || "N/A"}</p>
               </p>
               <p>
                 <span className="font-semibold">Contact No: </span>
