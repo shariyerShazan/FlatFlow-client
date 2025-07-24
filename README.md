@@ -30,6 +30,7 @@ To provide a digital platform for residents and admins to manage apartment renta
 - 💳 **Stripe Payment Integration** — Members can pay apartment rent securely.
 - 🖼️ **Cloudinary Image Upload** — Upload apartment images via admin panel.
 - 💬 **Feedback Section** — Users can submit feedback for FlatFlow.
+- 🔐 **Firebase Google Authentication — Secure Google Sign-In for easy user login.
 - 🧠 **Redux + Redux Persist** — Global state management with persistence.
 - 🔔 **Toast Notifications** — Instant feedback using `react-toastify`.
 - 🎨 **Modern UI** — Built with Tailwind CSS and styled using `daisyUI`.
@@ -57,5 +58,6 @@ To provide a digital platform for residents and admins to manage apartment renta
   "@stripe/react-stripe-js": "^3.7.0",
   "tailwindcss": "^4.1.11",
   "leaflet": "^1.9.4",
-  "react-leaflet": "^5.0.0"
+  "react-leaflet": "^5.0.0" ,
+  "firebase": "^11.0.0"
 }
