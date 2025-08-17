@@ -205,7 +205,21 @@ const HomePageForDashboard = () => {
 <div className="w-full h-80">
   <ResponsiveContainer>
     <PieChart>
-      
+      <Pie
+        data={[
+          { name: "Users", value: totalUser },
+          { name: "Members", value: totalMember },
+        ]}
+        cx="50%"
+        cy="50%"
+        outerRadius={100}
+        fill="#82ca9d"
+        dataKey="value"
+        label
+      >
+        <Cell fill="#60A5FA" />
+        <Cell fill="#A78BFA" />
+      </Pie>
       <Tooltip />
       <Legend />
     </PieChart>
