@@ -5,10 +5,12 @@ import FooterSection from '../components/FooterSection'
 
 const MainLayout = () => {
   return (
-    <div className='w-[90%] mx-auto'>
+    <div className=''>
+         <div className='w-[90%] mx-auto '>
       <Navbar />
       <Outlet />
       <FooterSection />
+    </div>
     </div>
   )
 }

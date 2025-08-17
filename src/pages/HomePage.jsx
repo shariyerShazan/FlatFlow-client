@@ -14,12 +14,13 @@ const HomePage = () => {
     <div>
       <Banner />
       <ApartmentLocation />
+      <div>
+              <AvailableApartmentList />
+           </div>
       <CouponsSection />
       <AboutBuilding />
       <FeedbackSection />
-           <div>
-              <AvailableApartmentList />
-           </div>
+         
     </div>
   )
 }

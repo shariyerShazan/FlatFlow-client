@@ -38,7 +38,7 @@ const FooterSection = () => {
       >
         {/* Left: Logo & Info */}
         <div className="flex flex-col items-center md:items-start space-y-3">
-          <h1 className="text-3xl font-extrabold tracking-tight">YourBuilding</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight">Flat<span className="text-favone">Flow</span></h1>
           <p className="max-w-sm text-gray-200">
             Experience luxury living with modern amenities, eco-friendly design, and a vibrant community. Your dream home awaits.
           </p>
