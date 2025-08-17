@@ -12,8 +12,7 @@ const HomePageForDashboard = () => {
   useEffect(() => {
       document.title = "Dashboard | FlatFlow";
     }, []);
-  const { user } = useSelector((store) => store.user); // user info from redux
-
+  const { user } = useSelector((store) => store.user); 
   const [dashboardData, setDashboardData] = useState({
     totalUser: 0,
     totalMember: 0,
