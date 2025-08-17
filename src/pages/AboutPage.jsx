@@ -36,7 +36,7 @@ const AboutPage = () => {
       document.title = "About | FlatFlow";
     }, []);
   return (
-    <main className="min-h-screen bg-gradient-to-tr from-blue-50 to-white text-gray-800">
+    <main className="min-h-screen bg-gradient-to-tr bg-favone/10 to-white text-gray-800">
       {/* Hero Section */}
       <motion.section
         className="max-w-5xl mx-auto px-6 py-20 text-center"
@@ -85,7 +85,7 @@ const AboutPage = () => {
 
       {/* Contact / Team Section */}
       <motion.section
-        className="bg-blue-600 text-white py-20 px-6"
+        className="bg-favone/70 text-black py-20 px-6"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
