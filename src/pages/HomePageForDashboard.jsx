@@ -199,6 +199,18 @@ const HomePageForDashboard = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
+      <h3 className="text-2xl font-semibold text-center mb-6">
+  Users vs Members Ratio
+</h3>
+<div className="w-full h-80">
+  <ResponsiveContainer>
+    <PieChart>
+      
+      <Tooltip />
+      <Legend />
+    </PieChart>
+  </ResponsiveContainer>
+</div>
     </div>
   );
 };
