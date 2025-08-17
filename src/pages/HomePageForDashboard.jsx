@@ -8,11 +8,22 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { USER_API_END_POINT } from "../utlis/apiEndPoints";
 
+// Recharts import
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
 const HomePageForDashboard = () => {
   useEffect(() => {
-      document.title = "Dashboard | FlatFlow";
-    }, []);
-  const { user } = useSelector((store) => store.user); 
+    document.title = "Dashboard | FlatFlow";
+  }, []);
+  const { user } = useSelector((store) => store.user);
+
   const [dashboardData, setDashboardData] = useState({
     totalUser: 0,
     totalMember: 0,
@@ -111,6 +122,14 @@ const HomePageForDashboard = () => {
     }
   };
 
+  // Pie Chart Data
+  const pieData = [
+    { name: "Available Apartments", value: availableApartment },
+    { name: "Agreemented Apartments", value: agreementedApartment },
+  ];
+
+  const COLORS = ["#34D399", "#F87171"]; // Green for available, Red for agreemented
+
   return (
     <div className="p-6">
       {/* Profile Card */}
@@ -121,7 +140,9 @@ const HomePageForDashboard = () => {
           className="w-20 h-20 rounded-full object-cover border-4 border-myPrimary"
         />
         <div>
-          <h3 className="text-xl font-semibold text-gray-800">{user?.fullName}</h3>
+          <h3 className="text-xl font-semibold text-gray-800">
+            {user?.fullName}
+          </h3>
           <p className="text-gray-600">{user?.email}</p>
           <p className="text-gray-600">Role: {user?.role}</p>
         </div>
@@ -132,7 +153,7 @@ const HomePageForDashboard = () => {
         📊 Dashboard Overview
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {cards.map((card, idx) => (
           <div
             key={idx}
@@ -151,6 +172,32 @@ const HomePageForDashboard = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Graph Section */}
+      <h3 className="text-2xl font-semibold text-center mb-6">
+        Apartment Ratio (Available vs Agreemented)
+      </h3>
+      <div className="w-full h-80">
+        <ResponsiveContainer>
+          <PieChart>
+            <Pie
+              data={pieData}
+              cx="50%"
+              cy="50%"
+              outerRadius={100}
+              fill="#8884d8"
+              dataKey="value"
+              label
+            >
+              {pieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index]} />
+              ))}
+            </Pie>
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
