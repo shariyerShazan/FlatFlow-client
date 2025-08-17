@@ -84,7 +84,7 @@ function Login() {
           onSubmit={handleLogin}
           className="flex flex-col gap-4 w-96 border-favone border-2 p-5 rounded-xl shadow-xl hover:shadow-2xl"
         >
-            <p className="text-2xl font-bold text-center">Media<span className="text-red-500">Up</span> Login</p>
+            <p className="text-2xl font-bold text-center">Flat<span className="text-favone">Flow</span> Login</p>
           {/* email */}
           <div className="flex flex-col">
             <label className="text-lg font-bold " htmlFor="">

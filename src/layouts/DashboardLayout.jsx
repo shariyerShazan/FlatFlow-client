@@ -43,7 +43,7 @@ const DashboardLayout = () => {
         </div>
 
         {/* Main Content */}
-        <div className="sm:col-span-20 p-4">
+        <div   onClick={toggleSidebar} className="sm:col-span-20 p-4 ">
           <Outlet />
         </div>
       </div>
