@@ -37,7 +37,7 @@ const AvailableApartmentList = () => {
   }, []);
 
   return (
-    <div className="px-6 py-10 min-h-[70vh]">
+    <div className="px-6 py-10 min-h-[70vh] bg-gradient-to-r from-purple-100 via-pink-100 to-red-100">
       <h2 className="text-3xl flex justify-center items-center gap-3 font-bold mb-6 text-center text-favone">
         <span className="text-black animate-bounce">
           <PiBuildingApartmentBold />
