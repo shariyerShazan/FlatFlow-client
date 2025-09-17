@@ -66,33 +66,45 @@ const ApartmentList = () => {
         {apartments && apartments.length > 0 ? (
           apartments.map((apartment , idx) => (
             <Link
-              to={`${apartment._id}`}
-              key={apartment._id}
-              data-aos="fade-up"
-              data-aos-delay={idx * 200}
-              className="border border-favone rounded-xl shadow-md p-4 hover:shadow-xl group transition bg-white relative"
-            >
-              <img
-                src={apartment?.image || "https://via.placeholder.com/400"}
-                alt={`Apartment ${apartment?.apartmentNo}`}
-                className="w-full h-52 object-cover rounded-md mb-4 group-hover:opacity-40 transition"
-              />
-              <div className="hidden group-hover:flex absolute inset-0 justify-center items-center text-lg font-bold ">
-                Click to view details
-              </div>
-              <div className="space-y-1">
-                <p><span className="font-bold">Block:</span> {apartment.block}</p>
-                <p><span className="font-bold">Floor:</span> {apartment.floor}</p>
-                <p><span className="font-bold">Apartment No:</span> {apartment.apartmentNo}</p>
-                <p><span className="font-bold">Rent:</span> ${apartment.rent}</p>
-                <p className={`font-bold ${apartment.available ? "text-green-600" : "text-red-500"}`}>
-                  Status: {apartment.available ? "Available" : "Not Available"}
-                </p>
-                <span className="group-hover:hidden text-sm">
-                  click to details...
-                </span>
-              </div>
-            </Link>
+  to={`/apartments/${apartment._id}`}
+  key={apartment._id}
+  data-aos="fade-up"
+  data-aos-delay={idx * 150}
+  className="bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition duration-300 flex flex-col overflow-hidden"
+>
+  {/* Image */}
+  <img
+    src={apartment?.image || "https://via.placeholder.com/400"}
+    alt={`Apartment ${apartment?.apartmentNo}`}
+    className="w-full h-52 object-cover"
+  />
+
+  {/* Content */}
+  <div className="p-5 flex-1 flex flex-col justify-between">
+    <div className="space-y-2">
+      <h3 className="text-xl font-bold text-gray-900">
+        Apartment {apartment.apartmentNo}
+      </h3>
+      <p className="text-gray-700">
+        <span className="font-semibold">Block:</span> {apartment.block}
+      </p>
+      <p className="text-gray-700">
+        <span className="font-semibold">Floor:</span> {apartment.floor}
+      </p>
+      <p className="text-gray-700">
+        <span className="font-semibold">Rent:</span>{" "}
+        <span className="text-favone font-bold">${apartment.rent}</span>
+      </p>
+      <p className="font-semibold text-green-600">Available ✅</p>
+    </div>
+
+    {/* Button */}
+    <button className="mt-5 cursor-pointer w-full py-2 rounded-xl bg-favone text-white font-semibold hover:bg-favone/90 transition">
+      View Apartment
+    </button>
+  </div>
+</Link>
+
           ))
         ) : (
           <p className="text-center col-span-3">No apartments found.</p>
