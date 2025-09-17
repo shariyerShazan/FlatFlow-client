@@ -95,7 +95,12 @@ const ApartmentList = () => {
         <span className="font-semibold">Rent:</span>{" "}
         <span className="text-favone font-bold">${apartment.rent}</span>
       </p>
-      <p className="font-semibold text-green-600">Available ✅</p>
+      {apartment?.available ? (
+  <p className="font-semibold text-green-600">Available ✅</p>
+) : (
+  <p className="font-semibold text-red-600">Not Available ❌</p>
+)}
+
     </div>
 
     {/* Button */}
